@@ -11,6 +11,7 @@ RUN set -ex \
     python3 \
     python3-dev \
     mysql-client \
+    libmysqlclient-dev \
     libboost-all-dev \
     libevent-dev \
     libasio-dev \
@@ -64,5 +65,7 @@ RUN set -ex \
     && chown -R `whoami` /usr/local/include/google \
     && rm -rf fmt \
     && rm -rf folly \
-    && rm -rf googletest
+    && rm -rf googletest \
+    && rm -f protoc-3.5.0-linux-x86_64.zip \
+    && rm -rf protoc3
 
