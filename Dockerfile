@@ -14,6 +14,7 @@ RUN set -ex \
     libmysqlclient-dev \
     libboost-all-dev \
     libevent-dev \
+    libpthread-stubs0-dev\
     libasio-dev \
     libprotobuf-dev \
     libprotoc-dev \
