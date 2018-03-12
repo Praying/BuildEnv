@@ -39,6 +39,7 @@ RUN set -ex \
     libelf-dev \
     libdwarf-dev \
     liblog4cxx-dev \
+    && apt clean all \
     && cd googletest-release-1.8.0 \ 
     && cmake configure .  \
     && make  \
