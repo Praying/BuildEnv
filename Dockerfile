@@ -1,5 +1,10 @@
 FROM ubuntu:18.04
 
+ADD protobuf-all-3.5.0.tar.gz ./   
+ADD googletest-release-1.8.0.tar.gz ./ 
+ADD folly-2018.03.05.00.tar.gz ./ 
+ADD fmt-4.1.0.tar.gz ./
+
 RUN set -ex \
     && apt update  \
     && apt install -y \
@@ -8,9 +13,8 @@ RUN set -ex \
     cmake \
     curl \
     unzip \
-    python3 \
     python3-dev \
-    mysql-client \
+    libpthread-stubs0-dev \
     libmysqlclient-dev \
     libboost-all-dev \
     libevent-dev \
@@ -35,38 +39,32 @@ RUN set -ex \
     libelf-dev \
     libdwarf-dev \
     liblog4cxx-dev \
-    && git clone https://github.com/google/googletest.git \
-    && cd googletest  \
+    && cd googletest-release-1.8.0 \ 
     && cmake configure .  \
     && make  \
     && make install  \
-    && git clone https://github.com/facebook/folly.git  \
-    && cd folly \
+    && cd .. \
+    && cd folly-2018.03.05.00 \
     && mkdir _build \
     && cd _build \
     && cmake configure .. \
     && make  \
     && make install  \
     && cd ../../ \
-    && git clone https://github.com/fmtlib/fmt.git  \
-    && cd fmt \
-    && git checkout remotes/origin/4.x \
+    && cd fmt-4.1.0 \
     && mkdir build \
     && cd build \
     && cmake .. \
     && make \
     && make install \
     && cd ../../  \
-    && curl -OL https://github.com/google/protobuf/releases/download/v3.5.0/protoc-3.5.0-linux-x86_64.zip \
-    && unzip protoc-3.5.0-linux-x86_64.zip -d protoc3 \
-    && rm -f /usr/local/bin/protoc \
-    && mv protoc3/bin/* /usr/local/bin/ \
-    && mv protoc3/include/* /usr/local/include/ \
-    && chown `whoami` /usr/local/bin/protoc \
-    && chown -R `whoami` /usr/local/include/google \
-    && rm -rf fmt \
-    && rm -rf folly \
-    && rm -rf googletest \
-    && rm -f protoc-3.5.0-linux-x86_64.zip \
-    && rm -rf protoc3
+    && cd protobuf-3.5.0  \
+    && ./configure \
+    && make \
+    && make check \
+    && make install \ 
+    && rm -rf fmt-4.1.0 \
+    && rm -rf folly-2018.03.05.00 \
+    && rm -rf googletest-release-1.8.0 \ 
+    && rm -rf protobuf-3.5.0 
 
