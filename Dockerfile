@@ -62,7 +62,6 @@ RUN set -ex \
     && cd protobuf-3.5.0  \
     && ./configure \
     && make \
-    && make check \
     && make install \ 
     && rm -rf fmt-4.1.0 \
     && rm -rf folly-2018.03.05.00 \
