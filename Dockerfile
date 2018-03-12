@@ -45,6 +45,11 @@ RUN set -ex \
     && make  \
     && make install  \
     && cd .. \
+    && cd double-conversion-3.0.0 \
+    && cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+    && make \
+    && make install \
+    && cd .. \
     && cd folly-2018.03.05.00 \
     && mkdir _build \
     && cd _build \
@@ -63,11 +68,6 @@ RUN set -ex \
     && ./configure \
     && make \
     && make install \ 
-    && cd .. \
-    && cd double-conversion-3.0.0 \
-    && cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-    && make \
-    && make install \
     && rm -rf fmt-4.1.0 \
     && rm -rf folly-2018.03.05.00 \
     && rm -rf googletest-release-1.8.0 \ 
