@@ -65,7 +65,7 @@ RUN set -ex \
     && make install \
     && cd ../../  \
     && cd protobuf-3.5.0  \
-    && ./configure \
+    && ./configure --prefix=/usr \
     && make \
     && make install \ 
     && rm -rf fmt-4.1.0 \
