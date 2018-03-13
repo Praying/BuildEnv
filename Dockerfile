@@ -20,9 +20,6 @@ RUN set -ex \
     libevent-dev \
     libpthread-stubs0-dev\
     libasio-dev \
-    libprotobuf-dev \
-    libprotoc-dev \
-    libdouble-conversion-dev \
     libgoogle-glog-dev \
     libgflags-dev \
     libiberty-dev \
