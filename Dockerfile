@@ -68,6 +68,7 @@ RUN set -ex \
     && ./configure --prefix=/usr \
     && make \
     && make install \ 
+    && cd .. \
     && rm -rf fmt-4.1.0 \
     && rm -rf folly-2018.03.05.00 \
     && rm -rf googletest-release-1.8.0 \ 
